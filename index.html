@@ -1247,11 +1247,14 @@
 		.about-stats {
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);
-			gap: 32px;
+			gap: clamp(24px, 4vw, 48px);
+			margin-top: 8px;
 		}
 
 		.stat {
 			text-align: left;
+			border-top: 2px solid var(--color-text);
+			padding-top: 16px;
 		}
 
 		.stat-label {
@@ -1260,21 +1263,29 @@
 			letter-spacing: 0.08em;
 			text-transform: uppercase;
 			color: var(--color-text-muted);
-			margin-bottom: 8px;
+			margin-bottom: 12px;
 		}
 
 		.stat-value {
 			font-family: var(--font-heading);
-			font-size: 28px;
+			font-size: clamp(2.5rem, 5vw, 4rem);
 			font-weight: 900;
+			line-height: 0.95;
+			letter-spacing: -0.02em;
 			color: var(--color-accent-ink);
+			font-variant-numeric: tabular-nums;
 		}
+
+		.stat-num { font-variant-numeric: tabular-nums; }
 
 		@media (max-width: 768px) {
 			.about-stats {
 				grid-template-columns: 1fr;
-				gap: 24px;
+				gap: 0;
 			}
+			.stat { padding: 16px 0; }
+			.stat + .stat { border-top: 1px solid var(--color-divider); }
+			.stat:first-child { border-top: 2px solid var(--color-text); }
 		}
 
 		/* === DELIVERY === */
@@ -1513,7 +1524,7 @@
 			box-shadow: 0 24px 48px -16px rgba(23, 22, 26, 0.28);
 			transform: translate(-48px, -50%);
 			opacity: 0;
-			transition: transform 420ms var(--ease-out), opacity 300ms var(--ease-out);
+			transition: transform 280ms var(--ease-out), opacity 240ms var(--ease-out);
 		}
 
 		.bs[data-active="1"] .bs__step[data-step="1"] .bs-card,
@@ -1538,11 +1549,11 @@
 			transform: none;
 		}
 		.bs-card > *:nth-child(1) { transition-delay: 0ms; }
-		.bs-card > *:nth-child(2) { transition-delay: 60ms; }
-		.bs-card > *:nth-child(3) { transition-delay: 100ms; }
-		.bs-card > *:nth-child(4) { transition-delay: 140ms; }
-		.bs-card > *:nth-child(5) { transition-delay: 180ms; }
-		.bs-card > *:nth-child(6) { transition-delay: 220ms; }
+		.bs-card > *:nth-child(2) { transition-delay: 40ms; }
+		.bs-card > *:nth-child(3) { transition-delay: 80ms; }
+		.bs-card > *:nth-child(4) { transition-delay: 120ms; }
+		.bs-card > *:nth-child(5) { transition-delay: 160ms; }
+		.bs-card > *:nth-child(6) { transition-delay: 200ms; }
 
 		.bs-card__line {
 			font-size: 11px;
@@ -1602,10 +1613,13 @@
 		.bs__progress {
 			position: absolute;
 			left: 0; bottom: 0;
+			width: 100%;
 			height: 3px;
 			background-color: var(--color-accent);
+			transform: scaleX(0);
+			transform-origin: left;
 			z-index: 6;
-			transition: width 200ms var(--ease-out);
+			transition: transform 200ms var(--ease-out);
 		}
 
 		/* Тач и reduced-motion: пиннинг снят, сцена — вертикальная лента
@@ -2045,11 +2059,11 @@
 					<div class="about-stats">
 				<div class="stat">
 					<div class="stat-label">С 2017 года на рынке</div>
-					<div class="stat-value">9 лет</div>
+					<div class="stat-value"><span class="stat-num" data-to="9">0</span> лет</div>
 				</div>
 				<div class="stat">
 					<div class="stat-label">Позиций в каталоге</div>
-					<div class="stat-value">40+</div>
+					<div class="stat-value"><span class="stat-num" data-to="40">0</span>+</div>
 				</div>
 				<div class="stat">
 					<div class="stat-label">Статус партнёра</div>
@@ -2140,40 +2154,94 @@
 
 	<script>
 		(function () {
+			var stats = document.querySelector('.about-stats');
+			if (!stats) return;
+			var nums = [].slice.call(stats.querySelectorAll('.stat-num'));
+			var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+			function setFinal() { nums.forEach(function (n) { n.textContent = n.getAttribute('data-to'); }); }
+			if (reduce) { setFinal(); return; }
+			var done = false;
+			function run() {
+				if (done) return; done = true;
+				var dur = 1200, start = null;
+				function ease(t) { return 1 - Math.pow(1 - t, 3); }
+				function frame(ts) {
+					if (start === null) start = ts;
+					var p = Math.min((ts - start) / dur, 1), e = ease(p);
+					nums.forEach(function (n) {
+						n.textContent = Math.round(parseInt(n.getAttribute('data-to'), 10) * e);
+					});
+					if (p < 1) requestAnimationFrame(frame);
+				}
+				requestAnimationFrame(frame);
+			}
+			var io = new IntersectionObserver(function (entries) {
+				entries.forEach(function (e) { if (e.isIntersecting) { run(); io.disconnect(); } });
+			}, { threshold: 0.4 });
+			io.observe(stats);
+		})();
+	</script>
+
+	<script>
+		(function () {
 			var bs = document.getElementById('bestsellers');
 			if (!bs) return;
 			var progress = bs.querySelector('.bs__progress');
 			var triggers = bs.querySelectorAll('.bs__trigger');
 			var videos = [].slice.call(bs.querySelectorAll('.bs__video'));
+			var steps = [].slice.call(bs.querySelectorAll('.bs__step'));
 			var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-			var current = -1;
+			var mobile = window.matchMedia('(max-width: 768px)').matches;
 
-			function activate(step) {
-				var idx = parseInt(step, 10) - 1;
-				if (idx === current) return;
-				current = idx;
-				bs.setAttribute('data-active', step);
-				if (progress) progress.style.width = (step * 25) + '%';
-				if (reduce) return;
-				videos.forEach(function (v, i) {
-					if (i === idx) {
-						try { v.currentTime = 0; var pr = v.play(); if (pr && pr.catch) pr.catch(function(){}); } catch (e) {}
-					} else {
-						try { v.pause(); } catch (e) {}
-					}
-				});
+			function play(i) {
+				var v = videos[i]; if (!v) return;
+				try { v.currentTime = 0; var pr = v.play(); if (pr && pr.catch) pr.catch(function(){}); } catch (e) {}
 			}
+			function pauseAll() { videos.forEach(function (v) { try { v.pause(); } catch (e) {} }); }
 
 			if (reduce) return;
+
+			if (mobile) {
+				// Лента: каждое видео играет один раз, когда его шаг входит в экран.
+				var mio = new IntersectionObserver(function (entries) {
+					entries.forEach(function (e) {
+						var i = steps.indexOf(e.target); if (i < 0) return;
+						if (e.isIntersecting) play(i); else { try { videos[i].pause(); } catch (err) {} }
+					});
+				}, { threshold: 0.5 });
+				steps.forEach(function (s) { mio.observe(s); });
+				return;
+			}
+
+			// Десктоп — закреплённая сцена.
+			var current = 0, inView = false;
+			function setActive(step) {
+				var idx = parseInt(step, 10) - 1;
+				bs.setAttribute('data-active', step);
+				if (progress) progress.style.transform = 'scaleX(' + (idx + 1) * 0.25 + ')';
+				if (idx === current && videos[idx] && !videos[idx].paused) return;
+				current = idx;
+				if (inView) { pauseAll(); play(idx); }
+			}
 
 			var io = new IntersectionObserver(function (entries) {
 				entries.forEach(function (e) {
 					if (!e.isIntersecting) return;
-					activate(e.target.getAttribute('data-step'));
+					setActive(e.target.getAttribute('data-step'));
 				});
 			}, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
 			triggers.forEach(function (t) { io.observe(t); });
-			activate('1');
+
+			// Видео крутятся только пока сцена на экране.
+			var sio = new IntersectionObserver(function (entries) {
+				entries.forEach(function (e) {
+					inView = e.isIntersecting;
+					if (inView) play(current); else pauseAll();
+				});
+			}, { threshold: 0 });
+			sio.observe(bs);
+
+			bs.setAttribute('data-active', '1');
 		})();
 	</script>
 </body>
