@@ -1252,6 +1252,8 @@
 		}
 
 		.stat {
+			display: flex;
+			flex-direction: column;
 			text-align: left;
 			border-top: 2px solid var(--color-text);
 			padding-top: 16px;
@@ -1266,17 +1268,48 @@
 			margin-bottom: 12px;
 		}
 
+		.stat-value,
+		.stat-badge {
+			margin-top: auto;
+		}
+
 		.stat-value {
 			font-family: var(--font-heading);
-			font-size: clamp(2.5rem, 5vw, 4rem);
+			font-size: clamp(2.5rem, 5vw, 3.5rem);
 			font-weight: 900;
 			line-height: 0.95;
 			letter-spacing: -0.02em;
 			color: var(--color-accent-ink);
 			font-variant-numeric: tabular-nums;
+			white-space: nowrap;
 		}
 
 		.stat-num { font-variant-numeric: tabular-nums; }
+
+		.stat-unit {
+			margin-left: 8px;
+			font-size: 0.32em;
+			font-weight: 600;
+			letter-spacing: 0.02em;
+			color: var(--color-text-muted);
+			vertical-align: baseline;
+		}
+
+		.stat-badge {
+			display: inline-flex;
+			align-self: flex-start;
+			align-items: center;
+			padding: 10px 18px;
+			border-radius: 999px;
+			background-color: var(--color-accent);
+			color: var(--color-text);
+			font-family: var(--font-heading);
+			font-size: 1rem;
+			font-weight: 800;
+			letter-spacing: 0.01em;
+			line-height: 1;
+			white-space: nowrap;
+		}
 
 		@media (max-width: 768px) {
 			.about-stats {
@@ -1286,6 +1319,7 @@
 			.stat { padding: 16px 0; }
 			.stat + .stat { border-top: 1px solid var(--color-divider); }
 			.stat:first-child { border-top: 2px solid var(--color-text); }
+			.stat-badge { margin-top: 12px; }
 		}
 
 		/* === DELIVERY === */
@@ -2059,7 +2093,7 @@
 					<div class="about-stats">
 				<div class="stat">
 					<div class="stat-label">С 2017 года на рынке</div>
-					<div class="stat-value"><span class="stat-num" data-to="9">0</span> лет</div>
+					<div class="stat-value"><span class="stat-num" data-to="9">0</span><span class="stat-unit">лет</span></div>
 				</div>
 				<div class="stat">
 					<div class="stat-label">Позиций в каталоге</div>
@@ -2067,7 +2101,7 @@
 				</div>
 				<div class="stat">
 					<div class="stat-label">Статус партнёра</div>
-					<div class="stat-value">Официальный</div>
+					<div class="stat-badge">Официальный</div>
 				</div>
 				</div>
 			</div>
