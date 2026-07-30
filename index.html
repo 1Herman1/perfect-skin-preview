@@ -2219,7 +2219,7 @@
 				var idx = parseInt(step, 10) - 1;
 				bs.setAttribute('data-active', step);
 				if (progress) progress.style.transform = 'scaleX(' + (idx + 1) * 0.25 + ')';
-				if (idx === current && videos[idx] && !videos[idx].paused) return;
+				if (idx === current) return;
 				current = idx;
 				if (inView) { pauseAll(); play(idx); }
 			}
