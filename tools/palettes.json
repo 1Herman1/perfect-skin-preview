@@ -86,22 +86,22 @@
 	{
 		"n": 5,
 		"file": "palette-5.html",
-		"name": "Botica Verde — испанская аптека",
+		"name": "Пудра и слива",
 		"tokens": {
-			"color-bg": "#F3F2EC",
-			"color-text": "#1A211C",
-			"color-text-muted": "#5C6559",
-			"color-accent": "#D3DDBB",
-			"color-accent-ink": "#2E5638",
-			"color-accent-text": "#F3F2EC",
-			"color-divider": "#DCDDD0",
-			"color-muted": "#E8E9DD",
-			"color-dark-bg": "#171B14",
-			"color-dark-text": "#E9EBDE",
+			"color-bg": "#F7F2F3",
+			"color-text": "#241A20",
+			"color-text-muted": "#6E5A62",
+			"color-accent": "#EFD5DA",
+			"color-accent-ink": "#6B2E42",
+			"color-accent-text": "#FDF6F4",
+			"color-divider": "#E3D6D9",
+			"color-muted": "#EFE7E8",
+			"color-dark-bg": "#2A2028",
+			"color-dark-text": "#F1E4E5",
 			"color-photo-bg": "#FFFFFF",
-			"rgb-bg": "243, 242, 236",
-			"rgb-text": "26, 33, 28",
-			"rgb-accent": "211, 221, 187"
+			"rgb-bg": "247, 242, 243",
+			"rgb-text": "36, 26, 32",
+			"rgb-accent": "239, 213, 218"
 		}
 	}
 ]
