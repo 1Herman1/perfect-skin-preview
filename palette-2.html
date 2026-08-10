@@ -11,23 +11,20 @@
 
 	<style>
 		:root {
-			--color-bg: #F4EFE8;
-			--color-text: #17161A;
-			--color-text-muted: #6E6A66;
-			--color-accent: #DDB894;
-			--color-accent-ink: #8B5E3C;
-			--color-accent-text: #FFFFFF;
-			--color-divider: #DFD7CB;
-			--color-muted: #EDE6DC;
-			--color-dark-bg: #17161A;
-			--color-dark-text: #F4EFE8;
-			/* Подложка под предметную съёмку — фото сняты на белом. */
+			--color-bg: #F4F2EC;
+			--color-text: #14202E;
+			--color-text-muted: #55606E;
+			--color-accent: #E4D3AC;
+			--color-accent-ink: #1F3A5F;
+			--color-accent-text: #F6F1E3;
+			--color-divider: #D8D1BE;
+			--color-muted: #EAE6DA;
+			--color-dark-bg: #16273D;
+			--color-dark-text: #ECE5D5;
 			--color-photo-bg: #FFFFFF;
-
-			/* Каналы для полупрозрачностей: меняются вместе с палитрой. */
-			--rgb-bg: 244, 239, 232;
-			--rgb-text: 23, 22, 26;
-			--rgb-accent: 221, 184, 148;
+			--rgb-bg: 244, 242, 236;
+			--rgb-text: 20, 32, 46;
+			--rgb-accent: 228, 211, 172;
 
 			--radius-pill: 999px;
 			--radius-block: 16px;
@@ -2285,5 +2282,41 @@
 			bs.setAttribute('data-active', '1');
 		})();
 	</script>
+
+	<style>
+		.pv-switch {
+			position: fixed; z-index: 999; right: 16px; bottom: 16px;
+			display: flex; align-items: center; gap: 4px;
+			padding: 6px 14px 6px 6px; border-radius: 999px;
+			background: rgba(var(--rgb-text), 0.92);
+			box-shadow: 0 8px 24px -8px rgba(var(--rgb-text), 0.5);
+			font-family: var(--font-text);
+		}
+		.pv-switch b {
+			font-size: 10px; font-weight: 600; letter-spacing: 0.08em;
+			text-transform: uppercase; color: var(--color-bg);
+			padding: 0 8px; opacity: 0.7;
+		}
+		.pv-switch a {
+			display: flex; flex-direction: column; align-items: center; justify-content: center;
+			gap: 3px; min-width: 44px; min-height: 44px;
+			border-radius: 999px; text-decoration: none;
+			font-size: 11px; font-weight: 600; color: var(--color-bg);
+			transition: background-color 160ms var(--ease-out);
+		}
+		.pv-switch a span { width: 16px; height: 16px; border-radius: 999px; display: block; }
+		.pv-switch a:hover { background: rgba(var(--rgb-bg), 0.16); }
+		.pv-switch a[aria-current="page"] { background: rgba(var(--rgb-bg), 0.24); }
+		.pv-switch a:focus-visible { outline: 2px solid var(--color-bg); outline-offset: 2px; }
+		@media print { .pv-switch { display: none; } }
+	</style>
+	<nav class="pv-switch" aria-label="Выбор цветовой палитры">
+		<b>Палитра</b>
+		<a href="palette-1.html" title="Кобальт и фарфор"><span style="background:#0B5FD0"></span>1</a>
+		<a href="palette-2.html" aria-current="page" title="Старое золото и морская синь"><span style="background:#1F3A5F"></span>2</a>
+		<a href="palette-3.html" title="Аптечный свет"><span style="background:#0A62B8"></span>3</a>
+		<a href="palette-4.html" title="Молоко и шоколад"><span style="background:#6B3A24"></span>4</a>
+		<a href="palette-5.html" title="Botica Verde — испанская аптека"><span style="background:#2E5638"></span>5</a>
+	</nav>
 </body>
 </html>
