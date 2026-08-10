@@ -43,6 +43,15 @@ for (const p of palettes) {
 	);
 	if (out === base) throw new Error(`${p.file}: блок :root не найден`);
 
+	// Переопределения конкретной палитры (файл в tools/overrides/), идут
+	// последними в <style> и перебивают базовые правила.
+	if (p.overrides) {
+		const css = readFileSync(new URL(`./overrides/${p.overrides}`, import.meta.url), 'utf8');
+		const marked = out.replace('\t</style>', `\n\t\t/* --- Переопределения палитры «${p.name}» --- */\n${css}\n\t</style>`);
+		if (marked === out) throw new Error(`${p.file}: не найден конец <style>`);
+		out = marked;
+	}
+
 	// Переключатель палитр — только для превью, в боевую вёрстку не идёт.
 	const links = palettes.map((q) => `\t\t<a href="${q.file}"${q.file === p.file ? ' aria-current="page"' : ''} title="${q.name}"><span style="background:${q.tokens['color-accent-ink']}"></span>${q.n}</a>`).join('\n');
 	const switcher = `

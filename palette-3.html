@@ -1711,6 +1711,104 @@
 		}
 
 			.bs__video { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+
+		/* --- Переопределения палитры «Аптечный свет» --- */
+		/* Клиент попросил убрать из этого варианта тёмные тона: все шесть
+		   тёмных поверхностей переведены в светлые. Ритм держится лесенкой
+		   #FFFFFF → bg → muted → accent → divider, чтобы секции по-прежнему
+		   отделялись друг от друга. */
+
+		/* 1. Верхняя полоса — самый плотный светлый тон. */
+		.top-bar {
+			background-color: var(--color-divider);
+			color: var(--color-text);
+		}
+
+		/* 2. Плитки «Подобрать» и «Консультация» — акцентная заливка. */
+		.cta-box {
+			background-color: var(--color-accent);
+			color: var(--color-text);
+		}
+		.cta-box h2 { color: var(--color-text); }
+		.cta-box-text { color: var(--color-text-muted); }
+
+		/* 3. Третья панель категорий — белая, отделена хайрлайном. */
+		.cat-panel--3 {
+			background-color: var(--color-accent-text);
+			color: var(--color-text);
+			box-shadow: inset 0 0 0 1px var(--color-divider);
+		}
+		.cat-panel--3 .cat-arrow {
+			background-color: var(--color-accent-ink);
+			color: var(--color-accent-text);
+		}
+
+		/* 4. «Профессионалам» — акцентная плита, карточки внутри белые. */
+		.pro-section {
+			background-color: var(--color-accent);
+			color: var(--color-text);
+		}
+		.pro-section h2,
+		.pro-products-title,
+		.pro-step-text { color: var(--color-text); }
+		.pro-subtitle,
+		.pro-step-note,
+		.pro-bonus { color: var(--color-text-muted); }
+		.pro-step { border-top: 1px solid var(--color-divider); }
+		.pro-step-number { color: var(--color-accent-ink); }
+		.pro-term {
+			border-top: 1px solid var(--color-divider);
+			color: var(--color-text);
+		}
+		.pro-term b { color: var(--color-accent-ink); }
+		.pro-lines li {
+			border: 1px solid var(--color-divider);
+			color: var(--color-text-muted);
+		}
+		.pro-product {
+			background-color: var(--color-accent-text);
+			border: 1px solid var(--color-divider);
+		}
+		.pro-spec { border-top: 1px solid var(--color-divider); }
+		.pro-spec dt { color: var(--color-text-muted); }
+		.pro-spec dd { color: var(--color-text); }
+		.pro-price-link {
+			border: 1px solid var(--color-accent-ink);
+			color: var(--color-accent-ink);
+		}
+		.pro-price-link:focus-visible {
+			outline: 2px solid var(--color-accent-ink);
+			outline-offset: 2px;
+		}
+		.pro-cta-cell {
+			background-color: var(--color-divider);
+			color: var(--color-text);
+		}
+
+		/* 5. Подвал — парная плашка к верхней полосе. */
+		footer {
+			background-color: var(--color-divider);
+			color: var(--color-text);
+		}
+		.footer-column h3 { color: var(--color-text); }
+		.footer-column a,
+		.footer-social-link { color: rgba(var(--rgb-text), 0.75); }
+		.footer-column a:hover,
+		.footer-social-link:hover { color: var(--color-text); }
+		.footer-divider { background-color: rgba(var(--rgb-text), 0.25); }
+		.footer-bottom { color: rgba(var(--rgb-text), 0.75); }
+		.footer-legal {
+			border-top: 1px solid rgba(var(--rgb-text), 0.25);
+			color: rgba(var(--rgb-text), 0.75);
+		}
+
+		/* 6. Сцена бестселлеров — приглушённая светлая подложка.
+		   Заодно чинится баг: на мобильном и при reduced-motion заголовок
+		   секции стоял цветом --color-text на фоне --color-text. */
+		.bs { background-color: var(--color-muted); }
+		.bs__title { color: var(--color-text); }
+		.bs__progress { background-color: var(--color-accent-ink); }
+
 	</style>
 </head>
 <body>

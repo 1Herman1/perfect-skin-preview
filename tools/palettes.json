@@ -45,6 +45,7 @@
 		"n": 3,
 		"file": "palette-3.html",
 		"name": "Аптечный свет",
+		"overrides": "palette-3-light.css",
 		"tokens": {
 			"color-bg": "#F6F9FC",
 			"color-text": "#10243A",
