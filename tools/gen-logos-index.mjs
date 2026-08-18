@@ -1,10 +1,10 @@
 import { readFileSync, writeFileSync } from 'node:fs';
-import { SHARED_CSS, requireBrand } from './logo-shared.mjs';
+import { SHARED_CSS, HERO_CSS, requireBrand } from './logo-shared.mjs';
 
 const DEPLOY = new URL('..', import.meta.url).pathname;
 const logos = JSON.parse(readFileSync(new URL('./logos.json', import.meta.url), 'utf8'));
 const brand = requireBrand(JSON.parse(readFileSync(new URL('./brand.json', import.meta.url), 'utf8')),
-	['goldOnLight']);
+	['goldOnLight', 'goldArtwork']);
 
 // Утверждённая палитра «Старое золото и морская синь» — витрина показывает
 // логотипы ровно в тех цветах, что на боевом сайте.
@@ -27,13 +27,16 @@ const PALETTE = `
 
 // Общая геометрия знака + начертания обоих вариантов: витрина показывает
 // знаки ровно такими же, как они выглядят в шапке макета.
-const allCss = [SHARED_CSS, ...logos.map((l) => l.css)].join('\n');
+const allCss = [SHARED_CSS, ...logos.map((l) => l.css), HERO_CSS(brand.goldArtwork)].join('\n');
 
 // В карточке логотип рендерится «как есть», но ссылки внутри знака кликать не
 // нужно — оборачиваем в контейнер и гасим переход по внутреннему <a>.
 // Карточка — уже ссылка, поэтому знак внутри рендерим без собственного <a>
 // (вложенные ссылки недопустимы и ломают разметку): меняем на <span>.
-const asSpan = (html) => html.trim().replace(/^<a /, '<span ').replace(/<\/a>$/, '</span>');
+const asSpan = (html) => html.trim()
+	.replace(/^<a /, '<span ')
+	.replace('class="brandmark bm"', 'class="brandmark bm bm--hero"')
+	.replace(/<\/a>$/, '</span>');
 
 const cards = logos.map((l) => `
 		<a class="card" href="${l.file}">
@@ -74,7 +77,7 @@ const html = `<!doctype html>
 		.card { display: grid; grid-template-columns: minmax(0, 1fr) 340px; border-radius: 16px; overflow: hidden; text-decoration: none; background: #1E1C24; color: inherit; transition: transform 200ms var(--ease-out); }
 		.card:hover { transform: translateY(-4px); }
 		.card:focus-visible { outline: 2px solid #F4EFE8; outline-offset: 3px; }
-		.card__stage { display: flex; align-items: center; min-height: 160px; padding: 40px; background: var(--color-bg); }
+		.card__stage { display: flex; align-items: center; min-height: 220px; padding: 48px; background: var(--color-bg); }
 		/* Знак внутри карточки — не интерактивен, вся карточка и есть ссылка. */
 		.card__stage .brandmark { pointer-events: none; }
 		.card__body { padding: 28px; display: flex; flex-direction: column; }
@@ -98,7 +101,7 @@ ${allCss}
 	<main class="grid">${cards}
 	</main>
 	<footer>
-		Знаки собраны из шрифтов (Playfair Display для засечных начертаний, Montserrat для модерна) — масштабируются без потери качества и перекрашиваются вместе с палитрой. Для печати и фавикона победивший знак отрисуем в вектор отдельно.
+		Оба варианта — с присланного лок-апа: знак, черта и палитра одинаковые, различаются начертание надписи и язык подписи. Монограмма сейчас набрана шрифтом (Playfair Display), а не векторной отрисовкой заказчика: как только придёт исходник, знак и фавикон заменяются на оригинал.
 	</footer>
 </body>
 </html>

@@ -2308,8 +2308,8 @@
 			color: var(--color-mark);
 			white-space: nowrap;
 		}
-		.bm__p { margin-right: -0.34em; }
-		.bm__s { font-size: 1.12em; }
+		.bm__p { margin-right: -0.40em; }
+		.bm__s { font-size: 1.28em; }
 
 		/* Высота черты = оптическая высота монограммы (cap-height S),
 		   а не её кегль: иначе черта выпирает ниже знака. */
@@ -2327,7 +2327,9 @@
 			display: block;
 			font-family: var(--font-heading);
 			text-transform: uppercase;
-			color: var(--color-text-muted);
+			/* На присланном лок-апе подпись того же синего, что и название,
+			   отличается только кеглем — держим как в оригинале. */
+			color: var(--color-text);
 			line-height: 1;
 			margin-top: 5px;
 			white-space: nowrap;

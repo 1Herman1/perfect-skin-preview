@@ -34,8 +34,8 @@ export const SHARED_CSS = `		.bm {
 			color: var(--color-mark);
 			white-space: nowrap;
 		}
-		.bm__p { margin-right: -0.34em; }
-		.bm__s { font-size: 1.12em; }
+		.bm__p { margin-right: -0.40em; }
+		.bm__s { font-size: 1.28em; }
 
 		/* Высота черты = оптическая высота монограммы (cap-height S),
 		   а не её кегль: иначе черта выпирает ниже знака. */
@@ -53,10 +53,28 @@ export const SHARED_CSS = `		.bm {
 			display: block;
 			font-family: var(--font-heading);
 			text-transform: uppercase;
-			color: var(--color-text-muted);
+			/* На присланном лок-апе подпись того же синего, что и название,
+			   отличается только кеглем — держим как в оригинале. */
+			color: var(--color-text);
 			line-height: 1;
 			margin-top: 5px;
 			white-space: nowrap;
+		}`;
+
+// Крупная подача знака для витрины: пропорции и золото как на присланном
+// лок-апе. На большом размере штрихи толстые, поэтому оригинальное золото
+// читается — в отличие от шапки, где знак ужат до высоты строки.
+export const HERO_CSS = (goldArtwork) => `		.bm--hero { gap: 26px; --color-mark: ${goldArtwork}; }
+		.bm--hero .bm__mono { font-size: 92px; margin-bottom: 8px; }
+		.bm--hero .bm__rule { height: 72px; }
+		.bm--hero .bm__name { font-size: 34px; }
+		.bm--hero .bm__sub { font-size: 15px; margin-top: 10px; }
+		@media (max-width: 720px) {
+			.bm--hero { gap: 16px; }
+			.bm--hero .bm__mono { font-size: 58px; }
+			.bm--hero .bm__rule { height: 46px; }
+			.bm--hero .bm__name { font-size: 20px; }
+			.bm--hero .bm__sub { font-size: 10px; }
 		}`;
 
 // Поведение знака в шапке макета, где рядом теснится навигация.
