@@ -2,17 +2,17 @@
 	{
 		"n": 1,
 		"file": "logo-1.html",
-		"name": "Тонкое начертание · Spanish Cosmeceuticals",
-		"note": "Первый клиентский вариант: золотая монограмма PS, вертикальная черта, разрежённая тонкая надпись и английская подпись SPANISH COSMECEUTICALS.",
-		"html": "<a class=\"brandmark bm\" href=\"#top\" aria-label=\"Perfect Skin — Spanish Cosmeceuticals\">\n\t\t\t\t\t\t<span class=\"bm__mono\" aria-hidden=\"true\"><span class=\"bm__p\">P</span><span class=\"bm__s\">S</span></span>\n\t\t\t\t\t\t<span class=\"bm__rule\" aria-hidden=\"true\"></span>\n\t\t\t\t\t\t<span class=\"bm__words\">\n\t\t\t\t\t\t\t<span class=\"bm__name bm__name--thin\">Perfect Skin</span>\n\t\t\t\t\t\t\t<span class=\"bm__sub bm__sub--thin\">Spanish Cosmeceuticals</span>\n\t\t\t\t\t\t</span>\n\t\t\t\t\t</a>",
-		"css": "\t\t/* Отрицательные margin-right гасят фантомный отступ, который трекинг\n\t\t   добавляет справа от последней буквы — иначе блок надписи съезжает. */\n\t\t.bm__name--thin {\n\t\t\tfont-family: var(--font-heading);\n\t\t\tfont-weight: 300;\n\t\t\tfont-size: 21px;\n\t\t\tletter-spacing: 0.30em;\n\t\t\tmargin-right: -0.30em;\n\t\t}\n\t\t.bm__sub--thin {\n\t\t\tfont-weight: 400;\n\t\t\tfont-size: 10px;\n\t\t\tletter-spacing: 0.34em;\n\t\t\tmargin-right: -0.34em;\n\t\t}\n\t\t@media (max-width: 1100px) { .bm__name--thin { font-size: 17px; letter-spacing: 0.2em; margin-right: -0.2em; } }"
+		"name": "Тонкое начертание",
+		"note": "Первый клиентский вариант: золотая монограмма PS, вертикальная черта и разрежённая тонкая надпись.",
+		"html": "<a class=\"brandmark bm\" href=\"#top\" aria-label=\"Perfect Skin — на главную\">\n\t\t\t\t\t\t<span class=\"bm__mono\" aria-hidden=\"true\"><span class=\"bm__p\">P</span><span class=\"bm__s\">S</span></span>\n\t\t\t\t\t\t<span class=\"bm__rule\" aria-hidden=\"true\"></span>\n\t\t\t\t\t\t<span class=\"bm__words\">\n\t\t\t\t\t\t\t<span class=\"bm__name bm__name--thin\">Perfect Skin</span>\n\t\t\t\t\t\t</span>\n\t\t\t\t\t</a>",
+		"css": "\t\t/* Отрицательный margin-right гасит фантомный отступ, который трекинг\n\t\t   добавляет справа от последней буквы — иначе надпись съезжает. */\n\t\t.bm__name--thin {\n\t\t\tfont-family: var(--font-heading);\n\t\t\tfont-weight: 300;\n\t\t\tfont-size: 21px;\n\t\t\tletter-spacing: 0.30em;\n\t\t\tmargin-right: -0.30em;\n\t\t}\n\t\t@media (max-width: 1100px) { .bm__name--thin { font-size: 17px; letter-spacing: 0.2em; margin-right: -0.2em; } }"
 	},
 	{
 		"n": 2,
 		"file": "logo-2.html",
-		"name": "Жирное начертание · Испанская космецевтика",
-		"note": "Второй клиентский вариант: та же монограмма, но надпись плотным жирным начертанием и подпись по-русски — ИСПАНСКАЯ КОСМЕЦЕВТИКА.",
-		"html": "<a class=\"brandmark bm\" href=\"#top\" aria-label=\"Perfect Skin — испанская космецевтика\">\n\t\t\t\t\t\t<span class=\"bm__mono\" aria-hidden=\"true\"><span class=\"bm__p\">P</span><span class=\"bm__s\">S</span></span>\n\t\t\t\t\t\t<span class=\"bm__rule\" aria-hidden=\"true\"></span>\n\t\t\t\t\t\t<span class=\"bm__words\">\n\t\t\t\t\t\t\t<span class=\"bm__name bm__name--bold\">Perfect Skin</span>\n\t\t\t\t\t\t\t<span class=\"bm__sub bm__sub--bold\">Испанская космецевтика</span>\n\t\t\t\t\t\t</span>\n\t\t\t\t\t</a>",
-		"css": "\t\t/* Монограмма чуть плотнее: тонкий сериф рядом с Montserrat 800\n\t\t   читался бы как два разных логотипа. */\n\t\t.bm__mono { font-weight: 600; }\n\t\t.bm__name--bold {\n\t\t\tfont-family: var(--font-heading);\n\t\t\tfont-weight: 800;\n\t\t\tfont-size: 22px;\n\t\t\tletter-spacing: 0.02em;\n\t\t}\n\t\t.bm__sub--bold {\n\t\t\tfont-weight: 700;\n\t\t\tfont-size: 10px;\n\t\t\tletter-spacing: 0.26em;\n\t\t\tmargin-right: -0.26em;\n\t\t}\n\t\t@media (max-width: 1100px) { .bm__name--bold { font-size: 18px; } }"
+		"name": "Жирное начертание",
+		"note": "Второй клиентский вариант: та же монограмма, но надпись плотным жирным начертанием.",
+		"html": "<a class=\"brandmark bm\" href=\"#top\" aria-label=\"Perfect Skin — на главную\">\n\t\t\t\t\t\t<span class=\"bm__mono\" aria-hidden=\"true\"><span class=\"bm__p\">P</span><span class=\"bm__s\">S</span></span>\n\t\t\t\t\t\t<span class=\"bm__rule\" aria-hidden=\"true\"></span>\n\t\t\t\t\t\t<span class=\"bm__words\">\n\t\t\t\t\t\t\t<span class=\"bm__name bm__name--bold\">Perfect Skin</span>\n\t\t\t\t\t\t</span>\n\t\t\t\t\t</a>",
+		"css": "\t\t/* Монограмма чуть плотнее: тонкий сериф рядом с Montserrat 800\n\t\t   читался бы как два разных логотипа. */\n\t\t.bm__mono { font-weight: 600; }\n\t\t.bm__name--bold {\n\t\t\tfont-family: var(--font-heading);\n\t\t\tfont-weight: 800;\n\t\t\tfont-size: 22px;\n\t\t\tletter-spacing: 0.02em;\n\t\t}\n\t\t@media (max-width: 1100px) { .bm__name--bold { font-size: 18px; } }"
 	}
 ]

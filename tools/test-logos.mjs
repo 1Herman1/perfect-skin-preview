@@ -5,8 +5,8 @@ const { chromium } = pkg;
 const DEPLOY = new URL('..', import.meta.url).pathname;
 
 const VARIANTS = [
-	{ file: 'logo-1.html', sub: 'Spanish Cosmeceuticals', weight: 'thin' },
-	{ file: 'logo-2.html', sub: 'Испанская космецевтика', weight: 'bold' },
+	{ file: 'logo-1.html', weight: 'thin' },
+	{ file: 'logo-2.html', weight: 'bold' },
 ];
 const SHOWCASE = 'logos.html';
 const WIDTHS = [1440, 1024, 390];
@@ -52,10 +52,14 @@ function parseChecks() {
 		// предпросмотра и законно упоминает оба варианта в title.
 		const markHtml = mark ? mark[0] : '';
 		check(markHtml.includes('Perfect Skin'), `${tag} в знаке присутствует «Perfect Skin»`, 'название не найдено');
-		check(markHtml.includes(v.sub), `${tag} в знаке подпись «${v.sub}»`, 'подпись не найдена');
-		const otherSub = VARIANTS.find((x) => x !== v).sub;
-		check(!markHtml.includes(otherSub), `${tag} в знаке нет чужой подписи «${otherSub}»`,
-			'подпись другого варианта присутствует в знаке');
+		// Заказчик убрал строку-дескриптор из знака: в лок-апе остаются
+		// только монограмма и название.
+		for (const tagline of ['Cosmeceuticals', 'космецевтика', 'КОСМЕЦЕВТИКА']) {
+			check(!markHtml.includes(tagline), `${tag} в знаке нет подписи «${tagline}»`,
+				'строка-дескриптор осталась в знаке');
+		}
+		check(!/bm__sub/.test(src), `${tag} нет мёртвых стилей подписи`,
+			'класс .bm__sub остался в файле');
 
 		if (!mark) {
 			fail(`${tag} блок .brandmark разобран`, 'не найден в исходнике');

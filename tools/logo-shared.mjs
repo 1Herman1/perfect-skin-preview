@@ -49,17 +49,7 @@ export const SHARED_CSS = `		.bm {
 			line-height: 1;
 			white-space: nowrap;
 		}
-		.bm__sub {
-			display: block;
-			font-family: var(--font-heading);
-			text-transform: uppercase;
-			/* На присланном лок-апе подпись того же синего, что и название,
-			   отличается только кеглем — держим как в оригинале. */
-			color: var(--color-text);
-			line-height: 1;
-			margin-top: 5px;
-			white-space: nowrap;
-		}`;
+`;
 
 // Крупная подача знака для витрины: пропорции и золото как на присланном
 // лок-апе. На большом размере штрихи толстые, поэтому оригинальное золото
@@ -68,13 +58,11 @@ export const HERO_CSS = (goldArtwork) => `		.bm--hero { gap: 26px; --color-mark:
 		.bm--hero .bm__mono { font-size: 92px; margin-bottom: 8px; }
 		.bm--hero .bm__rule { height: 72px; }
 		.bm--hero .bm__name { font-size: 34px; }
-		.bm--hero .bm__sub { font-size: 15px; margin-top: 10px; }
 		@media (max-width: 720px) {
 			.bm--hero { gap: 16px; }
 			.bm--hero .bm__mono { font-size: 58px; }
 			.bm--hero .bm__rule { height: 46px; }
 			.bm--hero .bm__name { font-size: 20px; }
-			.bm--hero .bm__sub { font-size: 10px; }
 		}`;
 
 // Поведение знака в шапке макета, где рядом теснится навигация.
@@ -85,7 +73,6 @@ export const HEADER_ONLY_CSS = `		@media (max-width: 900px) {
 			.bm__mono { font-size: 34px; }
 			.bm__rule { height: 26px; }
 			.bm__name { font-size: 14px; letter-spacing: 0.16em; }
-			.bm__sub { display: none; }
 		}
 		@media (max-width: 400px) {
 			.bm__rule, .bm__words { display: none; }

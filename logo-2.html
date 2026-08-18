@@ -1711,12 +1711,11 @@
 		<div class="container">
 			<div class="header-wrapper">
 				<div>
-					<a class="brandmark bm" href="#top" aria-label="Perfect Skin — испанская космецевтика">
+					<a class="brandmark bm" href="#top" aria-label="Perfect Skin — на главную">
 						<span class="bm__mono" aria-hidden="true"><span class="bm__p">P</span><span class="bm__s">S</span></span>
 						<span class="bm__rule" aria-hidden="true"></span>
 						<span class="bm__words">
 							<span class="bm__name bm__name--bold">Perfect Skin</span>
-							<span class="bm__sub bm__sub--bold">Испанская космецевтика</span>
 						</span>
 					</a>
 				</div>
@@ -2323,17 +2322,7 @@
 			line-height: 1;
 			white-space: nowrap;
 		}
-		.bm__sub {
-			display: block;
-			font-family: var(--font-heading);
-			text-transform: uppercase;
-			/* На присланном лок-апе подпись того же синего, что и название,
-			   отличается только кеглем — держим как в оригинале. */
-			color: var(--color-text);
-			line-height: 1;
-			margin-top: 5px;
-			white-space: nowrap;
-		}
+
 		/* Монограмма чуть плотнее: тонкий сериф рядом с Montserrat 800
 		   читался бы как два разных логотипа. */
 		.bm__mono { font-weight: 600; }
@@ -2343,19 +2332,12 @@
 			font-size: 22px;
 			letter-spacing: 0.02em;
 		}
-		.bm__sub--bold {
-			font-weight: 700;
-			font-size: 10px;
-			letter-spacing: 0.26em;
-			margin-right: -0.26em;
-		}
 		@media (max-width: 1100px) { .bm__name--bold { font-size: 18px; } }
 		@media (max-width: 900px) {
 			.bm { gap: 10px; }
 			.bm__mono { font-size: 34px; }
 			.bm__rule { height: 26px; }
 			.bm__name { font-size: 14px; letter-spacing: 0.16em; }
-			.bm__sub { display: none; }
 		}
 		@media (max-width: 400px) {
 			.bm__rule, .bm__words { display: none; }
@@ -2388,8 +2370,8 @@
 	</style>
 	<nav class="pv-switch" aria-label="Выбор логотипа">
 		<b>Лого</b>
-		<a href="logo-1.html" title="Тонкое начертание · Spanish Cosmeceuticals">1</a>
-		<a href="logo-2.html" aria-current="page" title="Жирное начертание · Испанская космецевтика">2</a>
+		<a href="logo-1.html" title="Тонкое начертание">1</a>
+		<a href="logo-2.html" aria-current="page" title="Жирное начертание">2</a>
 	</nav>
 </body>
 </html>
