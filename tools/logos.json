@@ -2,41 +2,17 @@
 	{
 		"n": 1,
 		"file": "logo-1.html",
-		"name": "Монограмма-плитка",
-		"note": "Синяя плитка с золотой монограммой PS + засечный леттеринг. Прямо по фирменному образцу.",
-		"html": "<a class=\"brandmark bm1\" href=\"#top\" aria-label=\"Perfect Skin — испанская космецевтика\">\n\t\t\t\t\t\t<span class=\"bm1__tile\" aria-hidden=\"true\">PS</span>\n\t\t\t\t\t\t<span class=\"bm1__rule\" aria-hidden=\"true\"></span>\n\t\t\t\t\t\t<span class=\"bm1__words\">\n\t\t\t\t\t\t\t<span class=\"bm1__name\">Perfect Skin</span>\n\t\t\t\t\t\t\t<span class=\"bm1__sub\">Испанская космецевтика</span>\n\t\t\t\t\t\t</span>\n\t\t\t\t\t</a>",
-		"css": "\t\t.bm1 { display: flex; align-items: center; gap: 14px; text-decoration: none; }\n\t\t.bm1__tile { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 12px; background: var(--color-accent-ink); color: var(--color-accent); font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 25px; letter-spacing: -2px; padding-right: 2px; }\n\t\t.bm1__rule { width: 1px; height: 40px; background: var(--color-accent); }\n\t\t.bm1__name { display: block; font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: 20px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-text); line-height: 1; }\n\t\t.bm1__sub { display: block; font-family: var(--font-text); font-weight: 600; font-size: 8.5px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--color-text-muted); margin-top: 5px; }\n\t\t@media (max-width: 900px) { .bm1__words { display: none; } }"
+		"name": "Тонкое начертание · Spanish Cosmeceuticals",
+		"note": "Первый клиентский вариант: золотая монограмма PS, вертикальная черта, разрежённая тонкая надпись и английская подпись SPANISH COSMECEUTICALS.",
+		"html": "<a class=\"brandmark bm\" href=\"#top\" aria-label=\"Perfect Skin — Spanish Cosmeceuticals\">\n\t\t\t\t\t\t<span class=\"bm__mono\" aria-hidden=\"true\"><span class=\"bm__p\">P</span><span class=\"bm__s\">S</span></span>\n\t\t\t\t\t\t<span class=\"bm__rule\" aria-hidden=\"true\"></span>\n\t\t\t\t\t\t<span class=\"bm__words\">\n\t\t\t\t\t\t\t<span class=\"bm__name bm__name--thin\">Perfect Skin</span>\n\t\t\t\t\t\t\t<span class=\"bm__sub bm__sub--thin\">Spanish Cosmeceuticals</span>\n\t\t\t\t\t\t</span>\n\t\t\t\t\t</a>",
+		"css": "\t\t/* Отрицательные margin-right гасят фантомный отступ, который трекинг\n\t\t   добавляет справа от последней буквы — иначе блок надписи съезжает. */\n\t\t.bm__name--thin {\n\t\t\tfont-family: var(--font-heading);\n\t\t\tfont-weight: 300;\n\t\t\tfont-size: 21px;\n\t\t\tletter-spacing: 0.30em;\n\t\t\tmargin-right: -0.30em;\n\t\t}\n\t\t.bm__sub--thin {\n\t\t\tfont-weight: 400;\n\t\t\tfont-size: 10px;\n\t\t\tletter-spacing: 0.34em;\n\t\t\tmargin-right: -0.34em;\n\t\t}\n\t\t@media (max-width: 1100px) { .bm__name--thin { font-size: 17px; letter-spacing: 0.2em; margin-right: -0.2em; } }"
 	},
 	{
 		"n": 2,
 		"file": "logo-2.html",
-		"name": "Чистый леттеринг",
-		"note": "Без иконки: разрежённый засечный шрифт с тонкой золотой чертой. Редакционно, дорого.",
-		"html": "<a class=\"brandmark bm2\" href=\"#top\" aria-label=\"Perfect Skin — испанская космецевтика\">\n\t\t\t\t\t\t<span class=\"bm2__name\">Perfect Skin</span>\n\t\t\t\t\t\t<span class=\"bm2__sub\">Испанская космецевтика</span>\n\t\t\t\t\t</a>",
-		"css": "\t\t.bm2 { display: inline-flex; flex-direction: column; gap: 5px; text-decoration: none; }\n\t\t.bm2__name { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: 22px; letter-spacing: 5px; text-transform: uppercase; color: var(--color-text); line-height: 1; padding-bottom: 6px; border-bottom: 1px solid var(--color-accent); }\n\t\t.bm2__sub { font-family: var(--font-text); font-weight: 600; font-size: 8.5px; letter-spacing: 4px; text-transform: uppercase; color: var(--color-text-muted); }\n\t\t@media (max-width: 520px) { .bm2__name { font-size: 17px; letter-spacing: 3px; } }"
-	},
-	{
-		"n": 3,
-		"file": "logo-3.html",
-		"name": "Круглая эмблема",
-		"note": "Печать-медальон с PS в кольце — аптечная достоверность, официальный дистрибьютор.",
-		"html": "<a class=\"brandmark bm3\" href=\"#top\" aria-label=\"Perfect Skin — испанская космецевтика\">\n\t\t\t\t\t\t<span class=\"bm3__seal\" aria-hidden=\"true\">PS</span>\n\t\t\t\t\t\t<span class=\"bm3__words\">\n\t\t\t\t\t\t\t<span class=\"bm3__name\">Perfect Skin</span>\n\t\t\t\t\t\t\t<span class=\"bm3__sub\">Испанская космецевтика</span>\n\t\t\t\t\t\t</span>\n\t\t\t\t\t</a>",
-		"css": "\t\t.bm3 { display: flex; align-items: center; gap: 14px; text-decoration: none; }\n\t\t.bm3__seal { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid var(--color-accent-ink); box-shadow: inset 0 0 0 3px var(--color-bg), inset 0 0 0 4px var(--color-accent); color: var(--color-accent-ink); font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 19px; letter-spacing: -1px; padding-right: 1px; }\n\t\t.bm3__name { display: block; font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: 19px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-text); line-height: 1; }\n\t\t.bm3__sub { display: block; font-family: var(--font-text); font-weight: 600; font-size: 8.5px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--color-text-muted); margin-top: 5px; }\n\t\t@media (max-width: 900px) { .bm3__words { display: none; } }"
-	},
-	{
-		"n": 4,
-		"file": "logo-4.html",
-		"name": "Модерн (шрифт сайта)",
-		"note": "Золотая плитка с синим PS и жирный Montserrat — в одном шрифте с сайтом, современно.",
-		"html": "<a class=\"brandmark bm4\" href=\"#top\" aria-label=\"Perfect Skin — испанская космецевтика\">\n\t\t\t\t\t\t<span class=\"bm4__tile\" aria-hidden=\"true\">PS</span>\n\t\t\t\t\t\t<span class=\"bm4__name\">Perfect<br>Skin</span>\n\t\t\t\t\t</a>",
-		"css": "\t\t.bm4 { display: flex; align-items: center; gap: 12px; text-decoration: none; }\n\t\t.bm4__tile { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 9px; background: var(--color-accent); color: var(--color-accent-ink); font-family: var(--font-heading); font-weight: 900; font-size: 18px; letter-spacing: -1px; }\n\t\t.bm4__name { font-family: var(--font-heading); font-weight: 900; font-size: 17px; line-height: 0.98; letter-spacing: -0.02em; text-transform: uppercase; color: var(--color-text); }\n\t\t@media (max-width: 900px) { .bm4__name { display: none; } }"
-	},
-	{
-		"n": 5,
-		"file": "logo-5.html",
-		"name": "Сомкнутые инициалы",
-		"note": "Крупные засечные P и S внахлёст без контейнера + тонкий вертикальный леттеринг.",
-		"html": "<a class=\"brandmark bm5\" href=\"#top\" aria-label=\"Perfect Skin — испанская космецевтика\">\n\t\t\t\t\t\t<span class=\"bm5__mono\" aria-hidden=\"true\"><span>P</span><span>S</span></span>\n\t\t\t\t\t\t<span class=\"bm5__rule\" aria-hidden=\"true\"></span>\n\t\t\t\t\t\t<span class=\"bm5__words\">\n\t\t\t\t\t\t\t<span class=\"bm5__name\">Perfect Skin</span>\n\t\t\t\t\t\t\t<span class=\"bm5__sub\">Испанская космецевтика</span>\n\t\t\t\t\t\t</span>\n\t\t\t\t\t</a>",
-		"css": "\t\t.bm5 { display: flex; align-items: center; gap: 14px; text-decoration: none; }\n\t\t.bm5__mono { display: inline-flex; align-items: baseline; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 38px; line-height: 1; color: var(--color-accent-ink); }\n\t\t.bm5__mono span:nth-child(2) { margin-left: -11px; }\n\t\t.bm5__rule { width: 1px; height: 38px; background: var(--color-accent); }\n\t\t.bm5__name { display: block; font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: 18px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-text); line-height: 1; }\n\t\t.bm5__sub { display: block; font-family: var(--font-text); font-weight: 600; font-size: 8.5px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--color-text-muted); margin-top: 5px; }\n\t\t@media (max-width: 900px) { .bm5__words { display: none; } }"
+		"name": "Жирное начертание · Испанская космецевтика",
+		"note": "Второй клиентский вариант: та же монограмма, но надпись плотным жирным начертанием и подпись по-русски — ИСПАНСКАЯ КОСМЕЦЕВТИКА.",
+		"html": "<a class=\"brandmark bm\" href=\"#top\" aria-label=\"Perfect Skin — испанская космецевтика\">\n\t\t\t\t\t\t<span class=\"bm__mono\" aria-hidden=\"true\"><span class=\"bm__p\">P</span><span class=\"bm__s\">S</span></span>\n\t\t\t\t\t\t<span class=\"bm__rule\" aria-hidden=\"true\"></span>\n\t\t\t\t\t\t<span class=\"bm__words\">\n\t\t\t\t\t\t\t<span class=\"bm__name bm__name--bold\">Perfect Skin</span>\n\t\t\t\t\t\t\t<span class=\"bm__sub bm__sub--bold\">Испанская космецевтика</span>\n\t\t\t\t\t\t</span>\n\t\t\t\t\t</a>",
+		"css": "\t\t/* Монограмма чуть плотнее: тонкий сериф рядом с Montserrat 800\n\t\t   читался бы как два разных логотипа. */\n\t\t.bm__mono { font-weight: 600; }\n\t\t.bm__name--bold {\n\t\t\tfont-family: var(--font-heading);\n\t\t\tfont-weight: 800;\n\t\t\tfont-size: 22px;\n\t\t\tletter-spacing: 0.02em;\n\t\t}\n\t\t.bm__sub--bold {\n\t\t\tfont-weight: 700;\n\t\t\tfont-size: 10px;\n\t\t\tletter-spacing: 0.26em;\n\t\t\tmargin-right: -0.26em;\n\t\t}\n\t\t@media (max-width: 1100px) { .bm__name--bold { font-size: 18px; } }"
 	}
 ]

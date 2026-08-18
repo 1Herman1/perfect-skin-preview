@@ -181,23 +181,7 @@
 			gap: 24px;
 		}
 
-		.logo {
-			font-family: var(--font-heading);
-			font-size: 18px;
-			font-weight: 900;
-			text-transform: uppercase;
-			letter-spacing: -0.03em;
-		}
 
-		.logo-sub {
-			font-family: var(--font-text);
-			font-size: 9px;
-			font-weight: 600;
-			letter-spacing: 0.08em;
-			text-transform: uppercase;
-			color: var(--color-text-muted);
-			margin-top: 2px;
-		}
 
 		.nav {
 			display: flex;
@@ -341,9 +325,6 @@
 				display: none;
 			}
 
-			.logo {
-				white-space: nowrap;
-			}
 		}
 
 		/* === HERO === */
@@ -1716,7 +1697,8 @@
 
 			.bs__video { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
 	</style>
-	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@300;400;700;800;900&display=swap" rel="stylesheet">
+	<link rel="icon" href="data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="15" fill="%231F3A5F"/><text x="32" y="45" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="36" font-weight="700" fill="%23E4D3AC">PS</text></svg>">
 </head>
 <body>
 	<!-- TOP BAR -->
@@ -1729,9 +1711,13 @@
 		<div class="container">
 			<div class="header-wrapper">
 				<div>
-					<a class="brandmark bm2" href="#top" aria-label="Perfect Skin — испанская космецевтика">
-						<span class="bm2__name">Perfect Skin</span>
-						<span class="bm2__sub">Испанская космецевтика</span>
+					<a class="brandmark bm" href="#top" aria-label="Perfect Skin — испанская космецевтика">
+						<span class="bm__mono" aria-hidden="true"><span class="bm__p">P</span><span class="bm__s">S</span></span>
+						<span class="bm__rule" aria-hidden="true"></span>
+						<span class="bm__words">
+							<span class="bm__name bm__name--bold">Perfect Skin</span>
+							<span class="bm__sub bm__sub--bold">Испанская космецевтика</span>
+						</span>
 					</a>
 				</div>
 				<nav class="nav">
@@ -2291,10 +2277,87 @@
 	</script>
 
 	<style>
-		.bm2 { display: inline-flex; flex-direction: column; gap: 5px; text-decoration: none; }
-		.bm2__name { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: 22px; letter-spacing: 5px; text-transform: uppercase; color: var(--color-text); line-height: 1; padding-bottom: 6px; border-bottom: 1px solid var(--color-accent); }
-		.bm2__sub { font-family: var(--font-text); font-weight: 600; font-size: 8.5px; letter-spacing: 4px; text-transform: uppercase; color: var(--color-text-muted); }
-		@media (max-width: 520px) { .bm2__name { font-size: 17px; letter-spacing: 3px; } }
+		:root {
+			--color-gold: #E4D3AC;
+			--color-gold-ink: #A87C2F;
+			--color-mark: var(--color-gold-ink);
+		}
+		/* На тёмных поверхностях знак возвращается к золоту борда. */
+		footer, .pro-section, .cta-box, .bs { --color-mark: var(--color-gold); }
+		.bm {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			text-decoration: none;
+			/* Знак — ссылка на главную, поэтому держим тач-таргет. */
+			min-height: 44px;
+		}
+
+		/* Монограмма: засечные P и S внахлёст, как в клиентском образце.
+		   Нахлёст задан на P, а не на S: тогда он не «плывёт» при правке
+		   кегля S. Сдвиг вниз компенсирует метрики Playfair — иначе знак
+		   садится ниже надписи при выравнивании по центру. */
+		.bm__mono {
+			display: inline-flex;
+			align-items: baseline;
+			font-family: 'Playfair Display', Georgia, serif;
+			font-weight: 500;
+			font-size: 42px;
+			line-height: 1;
+			margin-bottom: 4px;
+			color: var(--color-mark);
+			white-space: nowrap;
+		}
+		.bm__p { margin-right: -0.34em; }
+		.bm__s { font-size: 1.12em; }
+
+		/* Высота черты = оптическая высота монограммы (cap-height S),
+		   а не её кегль: иначе черта выпирает ниже знака. */
+		.bm__rule { width: 1px; height: 32px; background: var(--color-mark); flex: none; }
+
+		.bm__words { display: block; }
+		.bm__name {
+			display: block;
+			text-transform: uppercase;
+			color: var(--color-text);
+			line-height: 1;
+			white-space: nowrap;
+		}
+		.bm__sub {
+			display: block;
+			font-family: var(--font-heading);
+			text-transform: uppercase;
+			color: var(--color-text-muted);
+			line-height: 1;
+			margin-top: 5px;
+			white-space: nowrap;
+		}
+		/* Монограмма чуть плотнее: тонкий сериф рядом с Montserrat 800
+		   читался бы как два разных логотипа. */
+		.bm__mono { font-weight: 600; }
+		.bm__name--bold {
+			font-family: var(--font-heading);
+			font-weight: 800;
+			font-size: 22px;
+			letter-spacing: 0.02em;
+		}
+		.bm__sub--bold {
+			font-weight: 700;
+			font-size: 10px;
+			letter-spacing: 0.26em;
+			margin-right: -0.26em;
+		}
+		@media (max-width: 1100px) { .bm__name--bold { font-size: 18px; } }
+		@media (max-width: 900px) {
+			.bm { gap: 10px; }
+			.bm__mono { font-size: 34px; }
+			.bm__rule { height: 26px; }
+			.bm__name { font-size: 14px; letter-spacing: 0.16em; }
+			.bm__sub { display: none; }
+		}
+		@media (max-width: 400px) {
+			.bm__rule, .bm__words { display: none; }
+		}
 
 		.pv-switch {
 			position: fixed; z-index: 999; right: 16px; bottom: 16px;
@@ -2304,7 +2367,11 @@
 			box-shadow: 0 8px 24px -8px rgba(var(--rgb-text), 0.5);
 			font-family: var(--font-text);
 		}
-		.pv-switch b { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-bg); padding: 0 8px; opacity: 0.7; }
+		.pv-switch b {
+			font-size: 10px; font-weight: 600; letter-spacing: 0.08em;
+			text-transform: uppercase; color: var(--color-bg);
+			padding: 0 8px; opacity: 0.7;
+		}
 		.pv-switch a {
 			display: grid; place-items: center;
 			min-width: 44px; min-height: 44px;
@@ -2319,11 +2386,8 @@
 	</style>
 	<nav class="pv-switch" aria-label="Выбор логотипа">
 		<b>Лого</b>
-		<a href="logo-1.html" title="Монограмма-плитка">1</a>
-		<a href="logo-2.html" aria-current="page" title="Чистый леттеринг">2</a>
-		<a href="logo-3.html" title="Круглая эмблема">3</a>
-		<a href="logo-4.html" title="Модерн (шрифт сайта)">4</a>
-		<a href="logo-5.html" title="Сомкнутые инициалы">5</a>
+		<a href="logo-1.html" title="Тонкое начертание · Spanish Cosmeceuticals">1</a>
+		<a href="logo-2.html" aria-current="page" title="Жирное начертание · Испанская космецевтика">2</a>
 	</nav>
 </body>
 </html>

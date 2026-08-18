@@ -1,7 +1,10 @@
 import { readFileSync, writeFileSync } from 'node:fs';
+import { SHARED_CSS, requireBrand } from './logo-shared.mjs';
 
 const DEPLOY = new URL('..', import.meta.url).pathname;
 const logos = JSON.parse(readFileSync(new URL('./logos.json', import.meta.url), 'utf8'));
+const brand = requireBrand(JSON.parse(readFileSync(new URL('./brand.json', import.meta.url), 'utf8')),
+	['goldOnLight']);
 
 // Утверждённая палитра «Старое золото и морская синь» — витрина показывает
 // логотипы ровно в тех цветах, что на боевом сайте.
@@ -19,9 +22,12 @@ const PALETTE = `
 			--rgb-accent: 228, 211, 172;
 			--font-heading: 'Montserrat', sans-serif;
 			--font-text: 'Golos Text', sans-serif;
-			--ease-out: cubic-bezier(0.23, 1, 0.32, 1);`;
+			--ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+			--color-mark: ${brand.goldOnLight};`;
 
-const allCss = logos.map((l) => l.css).join('\n');
+// Общая геометрия знака + начертания обоих вариантов: витрина показывает
+// знаки ровно такими же, как они выглядят в шапке макета.
+const allCss = [SHARED_CSS, ...logos.map((l) => l.css)].join('\n');
 
 // В карточке логотип рендерится «как есть», но ссылки внутри знака кликать не
 // нужно — оборачиваем в контейнер и гасим переход по внутреннему <a>.
@@ -50,7 +56,7 @@ const html = `<!doctype html>
 	<title>Perfect Skin — варианты логотипа</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;900&family=Golos+Text:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;900&family=Golos+Text:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 	<style>
 		:root {${PALETTE}}
 		*, *::before, *::after { box-sizing: border-box; }

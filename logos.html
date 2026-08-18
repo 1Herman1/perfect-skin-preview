@@ -6,7 +6,7 @@
 	<title>Perfect Skin — варианты логотипа</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;900&family=Golos+Text:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;900&family=Golos+Text:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 	<style>
 		:root {
 			--color-bg: #F4F2EC;
@@ -22,7 +22,8 @@
 			--rgb-accent: 228, 211, 172;
 			--font-heading: 'Montserrat', sans-serif;
 			--font-text: 'Golos Text', sans-serif;
-			--ease-out: cubic-bezier(0.23, 1, 0.32, 1);}
+			--ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+			--color-mark: #A87C2F;}
 		*, *::before, *::after { box-sizing: border-box; }
 		body {
 			margin: 0; padding: clamp(32px, 6vw, 80px) clamp(20px, 5vw, 64px);
@@ -49,32 +50,86 @@
 		.card__cta { font-size: 14px; font-weight: 600; color: #F4EFE8; margin-top: auto; }
 		footer { margin-top: clamp(32px, 5vw, 56px); font-size: 13px; color: #6E6A66; max-width: 70ch; }
 
-		.bm1 { display: flex; align-items: center; gap: 14px; text-decoration: none; }
-		.bm1__tile { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 12px; background: var(--color-accent-ink); color: var(--color-accent); font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 25px; letter-spacing: -2px; padding-right: 2px; }
-		.bm1__rule { width: 1px; height: 40px; background: var(--color-accent); }
-		.bm1__name { display: block; font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: 20px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-text); line-height: 1; }
-		.bm1__sub { display: block; font-family: var(--font-text); font-weight: 600; font-size: 8.5px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--color-text-muted); margin-top: 5px; }
-		@media (max-width: 900px) { .bm1__words { display: none; } }
-		.bm2 { display: inline-flex; flex-direction: column; gap: 5px; text-decoration: none; }
-		.bm2__name { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: 22px; letter-spacing: 5px; text-transform: uppercase; color: var(--color-text); line-height: 1; padding-bottom: 6px; border-bottom: 1px solid var(--color-accent); }
-		.bm2__sub { font-family: var(--font-text); font-weight: 600; font-size: 8.5px; letter-spacing: 4px; text-transform: uppercase; color: var(--color-text-muted); }
-		@media (max-width: 520px) { .bm2__name { font-size: 17px; letter-spacing: 3px; } }
-		.bm3 { display: flex; align-items: center; gap: 14px; text-decoration: none; }
-		.bm3__seal { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid var(--color-accent-ink); box-shadow: inset 0 0 0 3px var(--color-bg), inset 0 0 0 4px var(--color-accent); color: var(--color-accent-ink); font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 19px; letter-spacing: -1px; padding-right: 1px; }
-		.bm3__name { display: block; font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: 19px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-text); line-height: 1; }
-		.bm3__sub { display: block; font-family: var(--font-text); font-weight: 600; font-size: 8.5px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--color-text-muted); margin-top: 5px; }
-		@media (max-width: 900px) { .bm3__words { display: none; } }
-		.bm4 { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-		.bm4__tile { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 9px; background: var(--color-accent); color: var(--color-accent-ink); font-family: var(--font-heading); font-weight: 900; font-size: 18px; letter-spacing: -1px; }
-		.bm4__name { font-family: var(--font-heading); font-weight: 900; font-size: 17px; line-height: 0.98; letter-spacing: -0.02em; text-transform: uppercase; color: var(--color-text); }
-		@media (max-width: 900px) { .bm4__name { display: none; } }
-		.bm5 { display: flex; align-items: center; gap: 14px; text-decoration: none; }
-		.bm5__mono { display: inline-flex; align-items: baseline; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 38px; line-height: 1; color: var(--color-accent-ink); }
-		.bm5__mono span:nth-child(2) { margin-left: -11px; }
-		.bm5__rule { width: 1px; height: 38px; background: var(--color-accent); }
-		.bm5__name { display: block; font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: 18px; letter-spacing: 3px; text-transform: uppercase; color: var(--color-text); line-height: 1; }
-		.bm5__sub { display: block; font-family: var(--font-text); font-weight: 600; font-size: 8.5px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--color-text-muted); margin-top: 5px; }
-		@media (max-width: 900px) { .bm5__words { display: none; } }
+		.bm {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			text-decoration: none;
+			/* Знак — ссылка на главную, поэтому держим тач-таргет. */
+			min-height: 44px;
+		}
+
+		/* Монограмма: засечные P и S внахлёст, как в клиентском образце.
+		   Нахлёст задан на P, а не на S: тогда он не «плывёт» при правке
+		   кегля S. Сдвиг вниз компенсирует метрики Playfair — иначе знак
+		   садится ниже надписи при выравнивании по центру. */
+		.bm__mono {
+			display: inline-flex;
+			align-items: baseline;
+			font-family: 'Playfair Display', Georgia, serif;
+			font-weight: 500;
+			font-size: 42px;
+			line-height: 1;
+			margin-bottom: 4px;
+			color: var(--color-mark);
+			white-space: nowrap;
+		}
+		.bm__p { margin-right: -0.34em; }
+		.bm__s { font-size: 1.12em; }
+
+		/* Высота черты = оптическая высота монограммы (cap-height S),
+		   а не её кегль: иначе черта выпирает ниже знака. */
+		.bm__rule { width: 1px; height: 32px; background: var(--color-mark); flex: none; }
+
+		.bm__words { display: block; }
+		.bm__name {
+			display: block;
+			text-transform: uppercase;
+			color: var(--color-text);
+			line-height: 1;
+			white-space: nowrap;
+		}
+		.bm__sub {
+			display: block;
+			font-family: var(--font-heading);
+			text-transform: uppercase;
+			color: var(--color-text-muted);
+			line-height: 1;
+			margin-top: 5px;
+			white-space: nowrap;
+		}
+		/* Отрицательные margin-right гасят фантомный отступ, который трекинг
+		   добавляет справа от последней буквы — иначе блок надписи съезжает. */
+		.bm__name--thin {
+			font-family: var(--font-heading);
+			font-weight: 300;
+			font-size: 21px;
+			letter-spacing: 0.30em;
+			margin-right: -0.30em;
+		}
+		.bm__sub--thin {
+			font-weight: 400;
+			font-size: 10px;
+			letter-spacing: 0.34em;
+			margin-right: -0.34em;
+		}
+		@media (max-width: 1100px) { .bm__name--thin { font-size: 17px; letter-spacing: 0.2em; margin-right: -0.2em; } }
+		/* Монограмма чуть плотнее: тонкий сериф рядом с Montserrat 800
+		   читался бы как два разных логотипа. */
+		.bm__mono { font-weight: 600; }
+		.bm__name--bold {
+			font-family: var(--font-heading);
+			font-weight: 800;
+			font-size: 22px;
+			letter-spacing: 0.02em;
+		}
+		.bm__sub--bold {
+			font-weight: 700;
+			font-size: 10px;
+			letter-spacing: 0.26em;
+			margin-right: -0.26em;
+		}
+		@media (max-width: 1100px) { .bm__name--bold { font-size: 18px; } }
 		@media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }
 	</style>
 </head>
@@ -87,86 +142,38 @@
 	<main class="grid">
 		<a class="card" href="logo-1.html">
 			<div class="card__stage">
-				<span class="brandmark bm1" href="#top" aria-label="Perfect Skin — испанская космецевтика">
-						<span class="bm1__tile" aria-hidden="true">PS</span>
-						<span class="bm1__rule" aria-hidden="true"></span>
-						<span class="bm1__words">
-							<span class="bm1__name">Perfect Skin</span>
-							<span class="bm1__sub">Испанская космецевтика</span>
+				<span class="brandmark bm" href="#top" aria-label="Perfect Skin — Spanish Cosmeceuticals">
+						<span class="bm__mono" aria-hidden="true"><span class="bm__p">P</span><span class="bm__s">S</span></span>
+						<span class="bm__rule" aria-hidden="true"></span>
+						<span class="bm__words">
+							<span class="bm__name bm__name--thin">Perfect Skin</span>
+							<span class="bm__sub bm__sub--thin">Spanish Cosmeceuticals</span>
 						</span>
 					</span>
 			</div>
 			<div class="card__body">
 				<div class="card__n">Лого 1</div>
-				<h2>Монограмма-плитка</h2>
-				<p>Синяя плитка с золотой монограммой PS + засечный леттеринг. Прямо по фирменному образцу.</p>
+				<h2>Тонкое начертание · Spanish Cosmeceuticals</h2>
+				<p>Первый клиентский вариант: золотая монограмма PS, вертикальная черта, разрежённая тонкая надпись и английская подпись SPANISH COSMECEUTICALS.</p>
 				<span class="card__cta">Открыть макет →</span>
 			</div>
 		</a>
 
 		<a class="card" href="logo-2.html">
 			<div class="card__stage">
-				<span class="brandmark bm2" href="#top" aria-label="Perfect Skin — испанская космецевтика">
-						<span class="bm2__name">Perfect Skin</span>
-						<span class="bm2__sub">Испанская космецевтика</span>
+				<span class="brandmark bm" href="#top" aria-label="Perfect Skin — испанская космецевтика">
+						<span class="bm__mono" aria-hidden="true"><span class="bm__p">P</span><span class="bm__s">S</span></span>
+						<span class="bm__rule" aria-hidden="true"></span>
+						<span class="bm__words">
+							<span class="bm__name bm__name--bold">Perfect Skin</span>
+							<span class="bm__sub bm__sub--bold">Испанская космецевтика</span>
+						</span>
 					</span>
 			</div>
 			<div class="card__body">
 				<div class="card__n">Лого 2</div>
-				<h2>Чистый леттеринг</h2>
-				<p>Без иконки: разрежённый засечный шрифт с тонкой золотой чертой. Редакционно, дорого.</p>
-				<span class="card__cta">Открыть макет →</span>
-			</div>
-		</a>
-
-		<a class="card" href="logo-3.html">
-			<div class="card__stage">
-				<span class="brandmark bm3" href="#top" aria-label="Perfect Skin — испанская космецевтика">
-						<span class="bm3__seal" aria-hidden="true">PS</span>
-						<span class="bm3__words">
-							<span class="bm3__name">Perfect Skin</span>
-							<span class="bm3__sub">Испанская космецевтика</span>
-						</span>
-					</span>
-			</div>
-			<div class="card__body">
-				<div class="card__n">Лого 3</div>
-				<h2>Круглая эмблема</h2>
-				<p>Печать-медальон с PS в кольце — аптечная достоверность, официальный дистрибьютор.</p>
-				<span class="card__cta">Открыть макет →</span>
-			</div>
-		</a>
-
-		<a class="card" href="logo-4.html">
-			<div class="card__stage">
-				<span class="brandmark bm4" href="#top" aria-label="Perfect Skin — испанская космецевтика">
-						<span class="bm4__tile" aria-hidden="true">PS</span>
-						<span class="bm4__name">Perfect<br>Skin</span>
-					</span>
-			</div>
-			<div class="card__body">
-				<div class="card__n">Лого 4</div>
-				<h2>Модерн (шрифт сайта)</h2>
-				<p>Золотая плитка с синим PS и жирный Montserrat — в одном шрифте с сайтом, современно.</p>
-				<span class="card__cta">Открыть макет →</span>
-			</div>
-		</a>
-
-		<a class="card" href="logo-5.html">
-			<div class="card__stage">
-				<span class="brandmark bm5" href="#top" aria-label="Perfect Skin — испанская космецевтика">
-						<span class="bm5__mono" aria-hidden="true"><span>P</span><span>S</span></span>
-						<span class="bm5__rule" aria-hidden="true"></span>
-						<span class="bm5__words">
-							<span class="bm5__name">Perfect Skin</span>
-							<span class="bm5__sub">Испанская космецевтика</span>
-						</span>
-					</span>
-			</div>
-			<div class="card__body">
-				<div class="card__n">Лого 5</div>
-				<h2>Сомкнутые инициалы</h2>
-				<p>Крупные засечные P и S внахлёст без контейнера + тонкий вертикальный леттеринг.</p>
+				<h2>Жирное начертание · Испанская космецевтика</h2>
+				<p>Второй клиентский вариант: та же монограмма, но надпись плотным жирным начертанием и подпись по-русски — ИСПАНСКАЯ КОСМЕЦЕВТИКА.</p>
 				<span class="card__cta">Открыть макет →</span>
 			</div>
 		</a>
