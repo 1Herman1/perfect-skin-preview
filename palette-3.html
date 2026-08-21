@@ -7,7 +7,7 @@
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Golos+Text:wght@400;600&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Golos+Text:wght@400;600&display=swap" rel="stylesheet">
 
 	<link rel="icon" type="image/png" sizes="32x32" href="media/logo/favicon-32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="media/logo/favicon-16.png">
@@ -1765,6 +1765,88 @@
 		}
 
 			.bs__video { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+
+		/* ============================================================
+		   ОБЛЕГЧЕНИЕ МАКЕТА — по замечанию заказчицы «много черноты».
+		   Правим две массы сразу: вес шрифта и площадь тёмного.
+		   Идёт последним блоком, поэтому перебивает исходные правила.
+		   ============================================================ */
+
+		/* --- 1. Типографика: снимаем вес, разжимаем набор.
+		   Трекинг и интерлиньяж — такие же рычаги «черноты», как вес:
+		   -0.03em при line-height 0.92 склеивал прописные в плашку. --- */
+		h1, h2, h3, h4 {
+			font-weight: 700;
+			letter-spacing: -0.015em;
+			line-height: 1.02;
+		}
+		h3, h4 { font-weight: 600; }
+
+		.cat-num                { font-weight: 700; }
+		.cat-spine span         { font-weight: 600; }
+		.product-image          { font-weight: 700; }
+		.product-name           { font-weight: 600; }
+		.product-price          { font-weight: 600; }
+		.pro-step-number        { font-weight: 700; }
+		.pro-cta-cell h4        { font-weight: 600; letter-spacing: -0.015em; }
+		.club-list-item         { font-weight: 500; }
+		.club-list-item::before { font-weight: 700; }
+		.stat-value             { font-weight: 700; }
+		.stat-badge             { font-weight: 600; }
+		.bs-card__name          { font-weight: 600; }
+
+		/* --- 2. Тёмные поверхности в светлые.
+		   Тёмными остаются только подвал (якорь страницы) и блок
+		   «Профессионалам» — он скруглённая плита с воздухом вокруг и
+		   читается как объект, а не как стена. --- */
+
+		.top-bar {
+			background-color: var(--color-divider);
+			color: var(--color-text);
+		}
+
+		/* Плитки намеренно разной массы: пара «золотая + тихая» ведёт
+		   к главному действию лучше, чем две одинаковые. */
+		.cta-box { color: var(--color-text); }
+		.cta-box h2 { color: var(--color-text); }
+		/* На золоте --color-text-muted даёт 4.33:1 — провал, поэтому доля. */
+		.cta-box-text { color: rgba(var(--rgb-text), 0.78); }
+		.cta-section .cta-box:nth-child(1) { background-color: var(--color-accent); }
+		.cta-section .cta-box:nth-child(2) {
+			background-color: var(--color-muted);
+			box-shadow: inset 0 0 0 1px var(--color-divider);
+		}
+
+		.cat-panel--3 {
+			background-color: var(--color-accent-text);
+			color: var(--color-text);
+			box-shadow: inset 0 0 0 1px var(--color-divider);
+		}
+		.cat-panel--3 .cat-num { opacity: 0.18; }
+		.cat-panel--3 .cat-arrow {
+			background-color: var(--color-accent-ink);
+			color: var(--color-accent-text);
+		}
+
+		/* Заодно чинится старый баг: на мобильном и при reduced-motion
+		   заголовок сцены стоял цветом --color-text на фоне --color-text. */
+		.bs { background-color: var(--color-muted); }
+		.bs__title { color: var(--color-text); }
+		.bs__progress { background-color: var(--color-accent-ink); }
+		.bs-card {
+			box-shadow:
+				0 16px 32px -20px rgba(var(--rgb-text), 0.18),
+				inset 0 0 0 1px var(--color-divider);
+		}
+
+		/* Описание в pro-карточках было #55606E на тёмном — 2.0:1. */
+		.pro-section .product-desc { color: rgba(var(--rgb-bg), 0.72); }
+
+		/* --- 3. Мелкая чернота: двухпиксельные линейки статистики --- */
+		.stat { border-top: 1px solid var(--color-text); }
+		@media (max-width: 768px) {
+			.stat:first-child { border-top: 1px solid var(--color-text); }
+		}
 
 		/* --- Переопределения палитры «Аптечный свет» --- */
 		/* Клиент попросил убрать из этого варианта тёмные тона: все шесть
