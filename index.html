@@ -9,6 +9,10 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Golos+Text:wght@400;600&display=swap" rel="stylesheet">
 
+	<link rel="icon" type="image/png" sizes="32x32" href="media/logo/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="media/logo/favicon-16.png">
+	<link rel="apple-touch-icon" href="media/logo/apple-touch-icon.png">
+
 	<style>
 		:root {
 			/* Палитра «Старое золото и морская синь» — утверждена заказчиком. */
@@ -181,22 +185,72 @@
 			gap: 24px;
 		}
 
-		.logo {
+		/* Знак заказчика: название — картинкой из присланного файла,
+		   подпись — живым текстом, чтобы ей можно было управлять на узких
+		   экранах и чтобы её видел поисковик. */
+		.brandmark {
+			display: inline-flex;
+			flex-direction: column;
+			justify-content: center;
+			gap: 6px;
+			text-decoration: none;
+			min-height: 44px;
+		}
+		/* Размер задаём шириной, а не высотой: тогда при нехватке места
+		   max-width ужимает знак пропорционально, а не расплющивает его. */
+		.brandmark__name {
+			display: block;
+			width: 331px;
+			height: auto;
+			max-width: 100%;
+		}
+		.brandmark__sub {
 			font-family: var(--font-heading);
-			font-size: 18px;
-			font-weight: 900;
-			text-transform: uppercase;
-			letter-spacing: -0.03em;
+			font-weight: 600;
+			font-size: 10px;
+			/* Подпись растянута ровно по ширине названия — так она набрана и в
+			   присланном файле. Отрицательный margin гасит разрядку после
+			   последнего знака, иначе строка уезжает вправо. */
+			letter-spacing: 0.49em;
+			margin-right: -0.49em;
+			color: var(--color-text);
+			white-space: nowrap;
+			max-width: 100%;
+			overflow: hidden;
+		}
+		.brandmark__break { display: none; }
+		.brandmark:focus-visible {
+			outline: 2px solid var(--color-accent-ink);
+			outline-offset: 4px;
+			border-radius: 4px;
 		}
 
-		.logo-sub {
-			font-family: var(--font-text);
-			font-size: 9px;
-			font-weight: 600;
-			letter-spacing: 0.08em;
-			text-transform: uppercase;
-			color: var(--color-text-muted);
-			margin-top: 2px;
+		/* На узких экранах рядом со знаком теснятся бургер, избранное и
+		   корзина — уменьшаем знак и пересчитываем разрядку под новую ширину. */
+		@media (max-width: 900px) {
+			.brandmark { gap: 4px; min-width: 0; }
+			.brandmark__name { width: 234px; }
+			.brandmark__sub {
+				font-size: 8px;
+				letter-spacing: 0.364em;
+				margin-right: -0.364em;
+			}
+		}
+
+		/* 360px — самый узкий экран, который держим. Там на знак остаётся
+		   184px, поэтому уменьшаем ещё и ужимаем разрядку. */
+		/* На телефоне подпись не влезает одной строкой в кегле, который ещё
+		   можно прочесть, — разбиваем её на две по смыслу. */
+		@media (max-width: 480px) {
+			.brandmark__name { width: 175px; }
+			.brandmark__break { display: inline; }
+			.brandmark__sub {
+				font-size: 8px;
+				letter-spacing: 0.02em;
+				margin-right: 0;
+				white-space: normal;
+				line-height: 1.35;
+			}
 		}
 
 		.nav {
@@ -1727,10 +1781,13 @@
 	<header>
 		<div class="container">
 			<div class="header-wrapper">
-				<div>
-					<div class="logo">PERFECT SKIN</div>
-					<div class="logo-sub">Испанская космецевтика</div>
-				</div>
+				<a class="brandmark" href="#top" aria-label="Perfect Skin — на главную">
+					<picture>
+						<source srcset="media/logo/logo-wordmark.webp" type="image/webp">
+						<img class="brandmark__name" src="media/logo/logo-wordmark.png" width="720" height="74" alt="Perfect Skin">
+					</picture>
+					<span class="brandmark__sub">Назначают врачи.<br class="brandmark__break"> Любит ваша кожа</span>
+				</a>
 				<nav class="nav">
 					<a href="#catalog">Каталог</a>
 					<a href="#brands">Бренды</a>
